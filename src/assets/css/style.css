@@ -1,0 +1,123 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --main-color: #80B500;
+    --main-color-hover: #699403;
+    --bg-color: #F7F5EB;
+    --main-color-dark: #344a00;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important;
+}
+.navbar > .container-fluid{
+    justify-content: space-between !important;
+    padding: 0 50px !important;
+}
+@media (min-width: 992px){
+    .navbar>.container-fluid{
+        justify-content: center !important;
+    }
+}
+
+nav a {
+    font-size: 18px;
+}
+nav a:hover{
+    color: var(--main-color) !important;
+}
+
+.dropdown-item:active {
+    color: #fff !important;
+    background-color: var(--main-color) !important;
+}
+
+main {
+    background-color: var(--bg-color);
+}
+.main-text-title {
+    font-weight: bolder;
+    font-size: 48px;
+}
+
+.btn-primary {
+    background-color: var(--main-color) !important;
+    border: 0 !important;
+}
+.btn-primary:hover {
+    background-color: var(--main-color-hover) !important;
+}
+
+.product-card:hover{
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+p a{
+    color: var(--main-color) !important;
+    text-decoration: none;
+}
+p a:hover{
+    color: var(--main-color-hover) !important;
+}
+
+/* INDEX-RECIPE */
+.recipe {
+    background-color: var(--bg-color);
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--main-color-dark);
+}
+.footer h5, .footer a, .footer p{
+    color: #fff !important;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: var(--main-color) !important;
+}
+.subscribe-btn {
+    background-color: var(--bg-color) !important;
+}
+.subscribe-btn:hover {
+    background-color: var(--main-color) !important;
+    color: #fff !important;
+}
+.sns-icon {
+    color: #fff !important;
+}
+
+/* PRODUCT PAGE PRODUCT CART */
+.my-cart {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+.my-cart:hover {
+    color: var(--main-color);
+}
+
+
+.product-cart {
+    font-size: 18px;
+}
+.cart-check {
+    color: var(--main-color);
+}
+
+/* LOGIN */
+.form-login {
+    background-color: var(--bg-color);
+}
+
+/* CONTACT */
+.contact-icon {
+    color: var(--main-color);
+    font-size: 28px;
+}
+.contact-icon:hover {
+    color: var(--main-color-hover);
+}
