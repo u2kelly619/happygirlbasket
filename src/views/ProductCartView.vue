@@ -9,7 +9,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <a class="my-cart text-center" href="./product-page.html"><i class="bi bi-chevron-left"></i>產品頁</a>
+      <router-link to="/product-page" class="my-cart text-center"><i class="bi bi-chevron-left"></i>產品頁</router-link>
     </div>
   </div>
 

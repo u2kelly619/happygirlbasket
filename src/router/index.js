@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import IndexView from '../views/IndexView.vue'
 import BrandStoryView from '../views/BrandStoryView.vue'
 import ContactUsView from '../views/ContactUsView.vue'
 import LoginView from '../views/LoginView.vue'
@@ -8,7 +9,13 @@ import ProductPageView from '../views/ProductPageView.vue'
 import RecipeView from '../views/RecipeView.vue'
 
 
+
 const routes = [
+  {
+    path: '/',
+    name: 'IndexView',
+    component: IndexView,
+  },
   {
     path: '/brand-story',
     name: 'BrandStoryView',

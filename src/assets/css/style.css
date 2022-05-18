@@ -51,8 +51,12 @@ main {
     background-color: var(--main-color-hover) !important;
 }
 
+.product-card{
+    transition: transform 0.2s ease;
+}
 .product-card:hover{
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    transform: scale(1.05);
 }
 
 p a{
@@ -66,6 +70,13 @@ p a:hover{
 /* INDEX-RECIPE */
 .recipe {
     background-color: var(--bg-color);
+}
+.recipe-post{
+    transition: transform 0.2s ease;
+}
+.recipe-post:hover{
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    transform: scale(1.05);
 }
 
 /* FOOTER */
