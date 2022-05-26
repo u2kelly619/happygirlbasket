@@ -1,6 +1,6 @@
 <template>
   <Navbar></Navbar>
-  <router-view/>
+  <router-view v-if="isRouterAlive"></router-view>
   <Footer></Footer>
 </template>
 
@@ -15,7 +15,21 @@ export default{
   },
   data(){
     return{
-      pageUrl: '/'
+      pageUrl: '/',
+      isRouterAlive: true
+    }
+  },
+  provide(){
+    return {
+      reload: this.reload
+    }
+  },
+  methods: {
+    reload(){
+      this.isRouterAlive = false
+      this.$nextTick(function(){
+        this.isRouterAlive = true
+      })
     }
   }
 }

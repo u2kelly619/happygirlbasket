@@ -5,11 +5,11 @@
             <div class="col-12 col-md-6 row align-items-evenly mb-3 ps-4">
               <h5 class="p-0"><a class="px-0" href="./index.html">喜妹菜籃子</a></h5>
               <ul class="nav d-flex justify-content-between p-0">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">品牌故事</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">最新消息</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">產品</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">食譜</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">聯絡我們</a></li>
+                <li class="nav-item mb-2"><router-link to="/brand-story" class="nav-link p-0 text-muted">品牌故事</router-link></li>
+                <li class="nav-item mb-2"><router-link to="/news" class="nav-link p-0 text-muted">最新消息</router-link></li>
+                <li class="nav-item mb-2"><router-link to="/products" class="nav-link p-0 text-muted">產品</router-link></li>
+                <li class="nav-item mb-2"><router-link to="/recipe" class="nav-link p-0 text-muted">食譜</router-link></li>
+                <li class="nav-item mb-2"><router-link to="/contact-us" class="nav-link p-0 text-muted">聯絡我們</router-link></li>
               </ul>
             </div>
       

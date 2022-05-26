@@ -26,7 +26,7 @@
                   <h1 class="main-text-title mb-3">喜妹菜籃子</h1>
                   <p class="fs-5">堅持踏實的日曝、石壓與陶缸發酵，將天然食材真實呈現，用時間換取原始的好滋味。</p>
                   <p class="fs-5">多用一點堅持與一點態度，呈現的不是只有手作，而是一種生活態度與主張。從最簡單的食材下廚吧！</p>
-                  <router-link to="/product-page" class="main-cta btn btn-primary btn-lg">查看產品</router-link>
+                  <router-link to="/products" class="main-cta btn btn-primary btn-lg">查看產品</router-link>
               </div>
           </div>
       </main>
@@ -40,7 +40,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">陶缸酸菜</h5>
               <p class="card-text"></p>
-              <router-link to="/product-page" class="btn btn-primary">More</router-link>
+              <router-link to="/products" class="btn btn-primary">More</router-link>
             </div>
           </div>
           <div class="product-card card col-12 col-sm-6 col-lg-2 m-3">
@@ -48,7 +48,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">甕藏菜脯</h5>
               <p class="card-text"></p>
-              <router-link to="/product-page" class="btn btn-primary">More</router-link>
+              <router-link to="/products" class="btn btn-primary">More</router-link>
             </div>
           </div>
           <div class="product-card card col-12 col-sm-6 col-lg-2 m-3">
@@ -56,7 +56,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">竹曬梅干</h5>
               <p class="card-text"></p>
-              <router-link to="/product-page" class="btn btn-primary">More</router-link>
+              <router-link to="/products" class="btn btn-primary">More</router-link>
             </div>
           </div>
           <div class="product-card card col-12 col-sm-6 col-lg-2 m-3">
@@ -64,7 +64,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">私房酸豆</h5>
               <p class="card-text"></p>
-              <router-link to="/product-page" class="btn btn-primary">More</router-link>
+              <router-link to="/products" class="btn btn-primary">More</router-link>
             </div>
           </div>
           <div class="product-card card col-12 col-sm-6 col-lg-2 m-3">
@@ -72,7 +72,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">暖日雲片</h5>
               <p class="card-text"></p>
-              <router-link to="/product-page" class="btn btn-primary">More</router-link>
+              <router-link to="/products" class="btn btn-primary">More</router-link>
             </div>
           </div>
         </div>

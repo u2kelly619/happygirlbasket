@@ -4,7 +4,7 @@
   <div class="form-login container-fluid py-5">
     <div class="row justify-content-center">
       <div class="col-8 col-md-4">
-          <form class="needs-validation" novalidate>
+          <form>
             <div class="form-floating mb-3">
               <input type="email" class="form-control" id="email"  name="email" placeholder="name@example.com" v-model="email" required>
               <label for="email" class="form-label">信箱</label>
@@ -25,7 +25,7 @@
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" @click.prevent="doLogin">登入</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">登入</button>
           </form>
       </div>
     </div>

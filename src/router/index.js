@@ -6,6 +6,7 @@ import LoginView from '../views/LoginView.vue'
 import NewsView from '../views/NewsView.vue'
 import ProductCartView from '../views/ProductCartView.vue'
 import ProductPageView from '../views/ProductPageView.vue'
+import ProductInfoView from '../views/ProductInfoView.vue'
 import RecipeView from '../views/RecipeView.vue'
 
 
@@ -37,15 +38,20 @@ const routes = [
     component: NewsView,
   },
   {
-    path: '/product-cart',
+    path: '/cart',
     name: 'ProductCartView',
     component: ProductCartView,
   },
   {
-    path: '/product-page',
+    path: '/products',
     name: 'ProductPageView',
     component: ProductPageView,
   },
+  // {
+  //   path: '/products/:productId',
+  //   name: 'Product',
+  //   component: ProductInfoView
+  // },
   {
     path: '/recipe',
     name: 'RecipeView',

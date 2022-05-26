@@ -15,17 +15,8 @@
               <li class="nav-item">
                 <router-link to="/news" class="nav-link active">最新消息</router-link>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                產品
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><router-link to="/product-page" class="dropdown-item">陶缸酸菜</router-link></li>
-                  <li><router-link to="/product-page" class="dropdown-item">甕藏菜脯</router-link></li>
-                  <li><router-link to="/product-page" class="dropdown-item">竹曬梅干</router-link></li>
-                  <li><router-link to="/product-page" class="dropdown-item">私房酸豆</router-link></li>
-                  <li><router-link to="/product-page" class="dropdown-item">暖日雲片</router-link></li>
-                </ul>
+              <li class="nav-item">
+                <router-link to="/products" class="nav-link active">產品</router-link>
               </li>
               <li class="nav-item">
                 <router-link to="/recipe" class="nav-link active">食譜</router-link>
@@ -34,7 +25,7 @@
                 <router-link to="/contact-us" class="nav-link active">聯絡我們</router-link>
               </li>
               <li class="nav-item ps-5">
-                <router-link to="/product-cart" class="nav-link active"><i class="bi bi-cart"></i></router-link>
+                <router-link to="/cart" class="nav-link active"><i class="bi bi-cart"></i> ({{currentQuantiy}})</router-link>
               </li>
               <li class="nav-item">
                 <router-link to="/login" class="nav-link active">登入/註冊</router-link>
@@ -47,7 +38,11 @@
 
 <script>
 export default {
-  
+  computed:{
+    currentQuantiy(){
+      return this.$store.getters.currentQuantiy
+    }
+  }
 }
 </script>
 

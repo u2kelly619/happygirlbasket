@@ -3,19 +3,22 @@
         <div class="card-body text-center">
             <h5 class="card-title">{{productName}}</h5>
             <img :src="img" alt="" class="img-fluid mb-3">
-            <!-- <img src="https://i.imgur.com/6AONezf.jpg" alt="" class="img-fluid mb-3"> -->
-            <a class="btn btn-primary">
-                <!-- ${pokemon.picked ? '<i class="bi bi-dash"></i>從購物車移除' : '<i class="bi bi-plus"></i>加入購物車'} -->
-                add to cart
-            </a>
+            <p>${{price}}</p>
+            <!-- <button class="btn btn-primary">
+                ${pokemon.picked ? '<i class="bi bi-dash"></i>從購物車移除' : '<i class="bi bi-plus"></i>加入購物車'}
+                加入購物車
+            </button> -->
         </div>
+        <slot></slot>
     </div>
 </template>
 <script>
 export default {
   props: {
+    'id':Number,
     'productName':String,
     'img':String,
+    'price':Number,
   },
   methods:{
     redirectProduct: function(id){
