@@ -4,10 +4,14 @@
   <div class="container-fluid mb-5">
     <div class="row justify-content-center">
       <template v-for="product in products">
-        <ProductBox v-bind="product">
-        <input class="form-control" type="number" v-model.number="number">
-        <button class="btn btn-primary my-3" @click="addCart(product)">加入購物車</button>
+        <ProductBox v-bind="product" @number-update="numberUpdate">
+        <!-- <input class="form-control" type="number" v-model.number="number"> -->
+        <div class="d-flex">
+          <button class="btn btn-primary my-3 me-2 flex-grow-1" @click="addCart(product)">加入購物車</button>
+          <button class="btn btn-outline-primary my-3"><i class="bi bi-search"></i></button>
+        </div>
         </ProductBox>
+        
       </template>
     </div>
   </div>
@@ -49,6 +53,7 @@ export default {
       //   alert('存貨不足')
       //   return;
       // }
+      
       this.$store.commit('addCart', {
         product: product,
         number: this.number
@@ -56,7 +61,13 @@ export default {
       alert('已加入購物車')
       console.log(product)
       console.log(this.$store.state.cart)
+      console.log(this.number)
+      
     },
+     numberUpdate(value){
+       this.number = value
+       console.log(this.number)
+      }
   }
 }
 

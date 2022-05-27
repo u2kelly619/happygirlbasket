@@ -40,7 +40,9 @@
     </div>
   </div>
 
-  <button class="btn btn-outline-primary" @click="removeAllCart()">delete</button>
+  <div class="text-center my-5">
+    <button class="btn btn-outline-secondary" @click="removeAllCart()">Delete all</button>
+  </div>
   <div class="text-center">
     <router-link to="/products" class="my-cart"><i class="bi bi-chevron-left"></i>產品頁</router-link>
   </div>

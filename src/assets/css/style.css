@@ -50,6 +50,14 @@ main {
 .btn-primary:hover {
     background-color: var(--main-color-hover) !important;
 }
+.btn-outline-primary {
+    color: var(--main-color) !important;
+    border-color: var(--main-color) !important;
+}
+.btn-outline-primary:hover{
+    color: #fff !important;
+    background-color: var(--main-color) !important;
+}
 
 .product-card{
     transition: transform 0.2s ease;

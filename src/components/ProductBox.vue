@@ -9,11 +9,17 @@
                 加入購物車
             </button> -->
         </div>
+        <input class="form-control" type="number" v-model.number="number">
         <slot></slot>
     </div>
 </template>
 <script>
 export default {
+  data(){
+    return{
+      number: 0,
+    }
+  },
   props: {
     'id':Number,
     'productName':String,
@@ -24,6 +30,14 @@ export default {
     redirectProduct: function(id){
       this.$router.push(`/products/${id}`)
     },
+  },
+  watch: { //監聽number
+      number: { //number有更改的話就把值傳出去
+          handler(value) {
+              //把value傳給numberUpdate(number-update)，讓他把value帶入去執行numberUpdate()，
+              this.$emit('numberUpdate', value);
+          }
+      }
   }
 }
 </script>
