@@ -32,6 +32,7 @@ import ProductBox from '@/components/ProductBox.vue'
 import axios from 'axios'
 
 export default {
+  inject: ['reload'],
   components: {
     ProductBox
   },
@@ -62,7 +63,7 @@ export default {
       console.log(product)
       console.log(this.$store.state.cart)
       console.log(this.number)
-      
+      this.reload()
     },
      numberUpdate(value){
        this.number = value
