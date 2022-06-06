@@ -29,7 +29,7 @@
 
 <script>
 import ProductBox from '@/components/ProductBox.vue'
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   inject: ['reload'],
@@ -44,9 +44,12 @@ export default {
     }
   },
   mounted(){
-    axios.get(this.apiPath)
-         .then(res => this.products = res.data)
-  },
+    this.axios.get('/productList')
+        //  .then(res => this.products = res.data)
+         .then((res) => {
+            console.log(res)
+          })
+      },
   methods: {
     addCart: function(product){
       // 判斷存貨
