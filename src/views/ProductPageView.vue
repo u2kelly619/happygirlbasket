@@ -11,7 +11,6 @@
           <button class="btn btn-outline-primary my-3"><i class="bi bi-search"></i></button>
         </div>
         </ProductBox>
-        
       </template>
     </div>
   </div>
@@ -40,15 +39,14 @@ export default {
     return{
       products: [],
       number: 0,
-      apiPath: this.$store.state.apiPath
+      // apiPath: this.$store.state.apiPath
     }
   },
   mounted(){
-    this.axios.get('/productList')
-        //  .then(res => this.products = res.data)
-         .then((res) => {
-            console.log(res)
-          })
+        this.axios.get('/productList').then((response) => {
+            console.log(response)
+            this.products = response.data.data
+        })
       },
   methods: {
     addCart: function(product){
