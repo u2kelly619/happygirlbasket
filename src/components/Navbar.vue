@@ -28,7 +28,10 @@
                 <router-link to="/cart" class="nav-link active"><i class="bi bi-cart"></i> ({{currentQuantiy}})</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/login" class="nav-link active">登入/註冊</router-link>
+                <router-link to="/login" class="nav-link active">登入</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/signup" class="nav-link active">註冊</router-link>
               </li>
             </ul>
           </div>
