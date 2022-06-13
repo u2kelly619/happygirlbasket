@@ -27,12 +27,19 @@
               <li class="nav-item ps-5">
                 <router-link to="/cart" class="nav-link active"><i class="bi bi-cart"></i> ({{currentQuantiy}})</router-link>
               </li>
-              <li class="nav-item">
-                <router-link to="/login" class="nav-link active">登入</router-link>
-              </li>
-              <li class="nav-item">
+              <template v-if="loginStatus === 0">
+                <li class="nav-item">
+                  <router-link to="/login" class="nav-link active">登入{{loginStatus}}</router-link>
+                </li>
+                <li class="nav-item">
                 <router-link to="/signup" class="nav-link active">註冊</router-link>
               </li>
+              </template>
+              <template v-else="loginStatus === 1">
+                <li class="nav-item">
+                  <a href="/" class="nav-link active" @click="logout">登出</a>
+                </li>
+              </template>
             </ul>
           </div>
         </div>
@@ -41,11 +48,36 @@
 
 <script>
 export default {
+  data(){
+    return{
+      // loginStatus: null
+      loginStatus: this.$store.state.loginStatus
+    }
+  },
   computed:{
     currentQuantiy(){
       return this.$store.getters.currentQuantiy
+    },
+    getLoginStatus(){
+      return this.$store.getters.getLoginStatus
     }
-  }
+  },
+  methods: {
+    logout: function(){
+      this.axios.post('/logout')
+          .then((response) => {
+            console.log(response.data)
+            // this.$router.push('/')
+            this.$store.commit({
+              type: 'updateLoginStatus',
+              loginStatus: 0
+            })
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+    },
+  },
 }
 </script>
 

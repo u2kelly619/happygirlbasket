@@ -22,7 +22,13 @@
                 <li v-for="error in errors">{{ error }}</li>
               </ul>
             </div>
-            <input class="w-100 btn btn-lg btn-primary"  value="送出" @click="postSignup">
+            <div  v-if="userExistMsg" class="alert alert-danger" role="alert">
+              <p>{{userExistMsg}}</p>
+            </div>
+            <div  v-if="userCreateSuccessMsg" class="alert alert-success" role="alert">
+              <p>{{userCreateSuccessMsg}}</p>
+            </div>
+            <input class="w-100 btn btn-lg btn-primary" value="送出" @click="postSignup">
           </form>
       </div>
     </div>
@@ -39,41 +45,40 @@ export default {
             displayName: '',
             email: '',
             password: '',
-            errors: []
+            errors: [],
+            userExistMsg: '',
+            userCreateSuccessMsg: ''
         }
     },
+    // mounted() {
+    //   let vm = this
+    //   this.$watch(vm => [vm.displayName, vm.email, vm.password], val => {
+    //     this.errors = [];
+    //     if (!vm.displayName) {
+    //       this.errors.push('請輸入姓名');
+    //     }
+
+    //     if (!vm.email) {
+    //       this.errors.push('請輸入Email');
+    //     } else if (!this.validEmail(vm.email)) {
+    //       this.errors.push('請輸入有效Email');
+    //     }
+
+    //     if (!vm.password) {
+    //       this.errors.push("請輸入密碼");
+    //     } else if (vm.password.length<8 || vm.password.length>20){
+    //       this.errors.push("請輸入8-20位密碼");
+    //     }
+    //   }, {
+    //     // immediate: true, // run immediately
+    //     deep: true // detects changes inside objects. not needed here, but maybe in other cases
+    //   }) 
+    // },
     methods: {
-        checkForm: function (e) {
-          this.errors = [];
-
-          if (!this.displayName) {
-            this.errors.push('請輸入姓名');
-          }
-
-          if (!this.email) {
-            this.errors.push('請輸入Email');
-          } else if (!this.validEmail(this.email)) {
-            this.errors.push('請輸入有效Email');
-          }
-
-          if (!this.password) {
-            this.errors.push("請輸入密碼");
-          } else if (this.password.length<8 || this.password.length>20){
-            this.errors.push("請輸入8-20位密碼");
-          }
-
-          if (!this.errors.length) {
-            return true;
-          }
-
-          e.preventDefault();
-        },
-
         validEmail: function (email) {
           var emailRule = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return emailRule.test(email);
         },
-
         postSignup() {
             // console.log(this.axios)
             const submitForm = {
@@ -84,7 +89,21 @@ export default {
             this.axios.post('/signup', submitForm)
             .then((res) => {
               console.log(res.data)
-              this.$router.push('/')
+              let status = res.data.hasUser
+              switch (status){
+                case 1 :
+                  this.userCreateSuccessMsg = ''
+                  this.userExistMsg = '此帳號已存在！請登入或使用其他 Email'
+                  break;
+                case 0 :
+                  this.userExistMsg = ''
+                  this.userCreateSuccessMsg = '註冊成功！'
+                  let navigate = this.$router
+                  setTimeout(function(){
+                      navigate.push('/login');
+                  },2000)
+                  break;
+              }
             })
             .catch((err)=>{
               console.log(err);
@@ -95,26 +114,4 @@ export default {
 
 
 
-//bootstrap表單驗證
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-      // (function () {
-      //   'use strict'
-
-      //   // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      //   var forms = document.querySelectorAll('.needs-validation')
-      //   console.log(forms);
-
-      //   // Loop over them and prevent submission
-      //   Array.prototype.slice.call(forms)
-      //     .forEach(function (form) {
-      //       form.addEventListener('submit', function (event) {
-      //         if (!form.checkValidity()) {
-      //           event.preventDefault()
-      //           event.stopPropagation()
-      //         }
-
-      //         form.classList.add('was-validated')
-      //       }, false)
-      //     })
-      // })()
 </script>

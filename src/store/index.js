@@ -4,7 +4,8 @@ import createPersistedState from "vuex-persistedstate";
 export default createStore({
   state: {
     apiPath: 'products.json',
-    cart: []
+    cart: [],
+    loginStatus: 0
   },
   getters: {
     currentQuantiy(state){
@@ -15,9 +16,26 @@ export default createStore({
       // return sum
       console.log(state.cart)
       return state.cart.reduce((productNumber, product) => parseInt(productNumber)+product.number, 0)
-    }
+    },
+    getLoginStatus(){
+      this.axios.get('/loginStatus')
+          .then((response) => {
+            // console.log(response.data)
+            if(response.data.loginStatus == 1){
+              state.loginStatus = 1
+            } else {
+              state.loginStatus = 0
+            }
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+    },
   },
   mutations: {
+    updateLoginStatus(state, {loginStatus}){
+      state.loginStatus = loginStatus
+    },
     addCart(state, data){
       let isNewProduct = true
       //cart = [product, product]

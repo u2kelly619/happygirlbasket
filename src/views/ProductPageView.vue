@@ -43,10 +43,14 @@ export default {
     }
   },
   mounted(){
-        this.axios.get('/productList').then((response) => {
+        this.axios.get('/productList')
+          .then((response) => {
             console.log(response)
             this.products = response.data.data
-        })
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
       },
   methods: {
     addCart: function(product){

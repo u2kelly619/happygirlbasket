@@ -4,7 +4,7 @@
   <div class="form-login container-fluid py-5">
     <div class="row justify-content-center">
       <div class="col-8 col-md-4">
-          <form @submit="checkForm" action="" method="post" novalidate>
+          <form>
             <div class="form-floating mb-3">
               <input type="email" class="form-control mb-1" id="email"  name="email" placeholder="name@example.com" v-model="email">
               <label for="email" class="form-label">信箱</label>
@@ -23,7 +23,10 @@
                 <li v-for="error in errors">{{ error }}</li>
               </ul>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" @click="postLogin">登入</button>
+            <div  v-if="noLoginMsg" class="alert alert-danger" role="alert">
+              <p>{{noLoginMsg}}</p>
+            </div>
+            <input class="w-100 btn btn-lg btn-primary" value="登入" @click="postLogin">
           </form>
       </div>
     </div>
@@ -35,36 +38,37 @@
 
 <script>
 export default {
+    inject: ['reload'],
     data() {
         return {
             email: '',
             password: '',
-            errors: []
+            errors: [],
+            noLoginMsg: '',
         }
     },
+    
+    // mounted() {
+    //   let vm = this
+    //   this.$watch(vm => [vm.email, vm.password], val => {
+    //     this.errors = [];
+    //     if (!vm.email) {
+    //       this.errors.push('請輸入Email');
+    //     } else if (!this.validEmail(vm.email)) {
+    //       this.errors.push('請輸入有效Email');
+    //     }
+
+    //     if (!vm.password) {
+    //       this.errors.push("請輸入密碼");
+    //     }
+    //   }, {
+    //     // immediate: true, // run immediately
+    //     deep: true // detects changes inside objects. not needed here, but maybe in other cases
+    //   }) 
+    // },
+
+
     methods: {
-        checkForm: function (e) {
-          this.errors = [];
-
-          if (!this.email) {
-            this.errors.push('請輸入Email');
-          } else if (!this.validEmail(this.email)) {
-            this.errors.push('請輸入有效Email');
-          }
-
-          if (!this.password) {
-            this.errors.push("請輸入密碼");
-          } else if (this.password.length<8 || this.password.length>20){
-            this.errors.push("請輸入8-20位密碼");
-          }
-
-          if (!this.errors.length) {
-            return true;
-          }
-
-          e.preventDefault();
-        },
-
         validEmail: function (email) {
           var emailRule = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return emailRule.test(email);
@@ -75,13 +79,33 @@ export default {
                 email: this.email,
                 password: this.password
             }
-            this.axios.post('/login', submitForm).then((response) => {
-                console.log(response)
-                this.$router.push('/')
-            })
+            // console.log(submitForm)
+            this.axios.post('/login', submitForm)
+                .then((res) => {
+                  console.log(res.data)
+                  let status = res.data.loginSuccess
+                  switch (status){
+                    case 0, 2 :
+                      this.noLoginMsg = '找不到此 user 或密碼錯誤'
+                      break;
+                    case 1 :
+                      this.reload()
+                      this.$router.push('/')
+                      this.$store.commit({
+                        type: 'updateLoginStatus',
+                        loginStatus: 1
+                      })
+                      break;
+                  }
+                  
+                })
+                .catch((err)=>{
+                  console.log(err);
+                })
+                }
         },
     }
-}
+
 
 
 

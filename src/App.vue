@@ -16,7 +16,7 @@ export default{
   data(){
     return{
       pageUrl: '/',
-      isRouterAlive: true
+      isRouterAlive: true,
     }
   },
   provide(){
@@ -24,14 +24,31 @@ export default{
       reload: this.reload
     }
   },
+  // mounted(){
+  //       this.getLoginStatus()
+  // },
   methods: {
     reload(){
       this.isRouterAlive = false
       this.$nextTick(function(){
         this.isRouterAlive = true
       })
-    }
-  }
+    },
+    // getLoginStatus(){
+    //   this.axios.get('/loginStatus')
+    //       .then((response) => {
+    //         console.log(response.data)
+    //         if(response.data.loginStatus == 1){
+    //           this.loginStatus = 1
+    //         } else {
+    //           this.loginStatus = 0
+    //         }
+    //       })
+    //       .catch((err)=>{
+    //         console.log(err);
+    //       })
+    // },
+  },
 }
 
 $(document).ready(function(){
