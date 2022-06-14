@@ -17,20 +17,9 @@ export default createStore({
       console.log(state.cart)
       return state.cart.reduce((productNumber, product) => parseInt(productNumber)+product.number, 0)
     },
-    getLoginStatus(){
-      this.axios.get('/loginStatus')
-          .then((response) => {
-            // console.log(response.data)
-            if(response.data.loginStatus == 1){
-              state.loginStatus = 1
-            } else {
-              state.loginStatus = 0
-            }
-          })
-          .catch((err)=>{
-            console.log(err);
-          })
-    },
+    loginStatus(state){
+      return state.loginStatus
+    }
   },
   mutations: {
     updateLoginStatus(state, {loginStatus}){
@@ -58,6 +47,16 @@ export default createStore({
     }
   },
   actions: {
+    getLoginStatus(context){
+      this.axios.get('/loginStatus')
+          .then((response) => {
+            console.log(response.data)
+            context.commit('updateLoginStatus')
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+    },
   },
   modules: {
   },

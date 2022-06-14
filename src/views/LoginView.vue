@@ -91,10 +91,6 @@ export default {
                     case 1 :
                       this.reload()
                       this.$router.push('/')
-                      this.$store.commit({
-                        type: 'updateLoginStatus',
-                        loginStatus: 1
-                      })
                       break;
                   }
                   

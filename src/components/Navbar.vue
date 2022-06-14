@@ -37,7 +37,7 @@
               </template>
               <template v-else="loginStatus === 1">
                 <li class="nav-item">
-                  <a href="/" class="nav-link active" @click="logout">登出</a>
+                  <a href="/" class="nav-link active" @click="logout">登出{{loginStatus}}</a>
                 </li>
               </template>
             </ul>
@@ -51,15 +51,15 @@ export default {
   data(){
     return{
       // loginStatus: null
-      loginStatus: this.$store.state.loginStatus
+      // loginStatus: this.$store.state.loginStatus
     }
   },
   computed:{
     currentQuantiy(){
       return this.$store.getters.currentQuantiy
     },
-    getLoginStatus(){
-      return this.$store.getters.getLoginStatus
+    loginStatus(){
+      return this.$store.getters.loginStatus
     }
   },
   methods: {
@@ -68,10 +68,10 @@ export default {
           .then((response) => {
             console.log(response.data)
             // this.$router.push('/')
-            this.$store.commit({
-              type: 'updateLoginStatus',
-              loginStatus: 0
-            })
+            // this.$store.commit({
+            //   type: 'updateLoginStatus',
+            //   loginStatus: 0
+            // })
           })
           .catch((err)=>{
             console.log(err);
