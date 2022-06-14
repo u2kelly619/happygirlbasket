@@ -74,13 +74,13 @@ export default {
           return emailRule.test(email);
         },
 
-        postLogin() {
+        async postLogin() {
             const submitForm = {
                 email: this.email,
                 password: this.password
             }
             // console.log(submitForm)
-            this.axios.post('/login', submitForm)
+            await this.axios.post('/login', submitForm)
                 .then((res) => {
                   console.log(res.data)
                   let status = res.data.loginSuccess
@@ -89,7 +89,8 @@ export default {
                       this.noLoginMsg = '找不到此 user 或密碼錯誤'
                       break;
                     case 1 :
-                      this.reload()
+                      // this.reload()
+                      this.$store.dispatch('getLoginStatus')
                       this.$router.push('/')
                       break;
                   }
@@ -100,6 +101,11 @@ export default {
                 })
                 }
         },
+        computed:{
+            updateLoginStatus() {
+                return this.$store.state.loginStatus
+            }
+        }
     }
 
 
