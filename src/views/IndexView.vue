@@ -175,3 +175,24 @@
       <div class="container-fluid" style="height:100px;background-color:var(--bg-color)"></div>
 
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      products: [],
+    };
+  },
+  
+  mounted() {
+    this.axios.get("/productList").then((response) => {
+      console.log(response);
+
+      this.products = response.data.data;
+      //存進localStorage
+      localStorage.setItem("products", JSON.stringify(this.products)); //products自己取的
+    });
+  },
+};
+
+</script>

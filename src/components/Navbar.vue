@@ -33,9 +33,12 @@
                 </li>
                 <li class="nav-item">
                 <router-link to="/signup" class="nav-link active">註冊</router-link>
-              </li>
+                </li>
               </template>
               <template v-if="$store.state.loginStatus === 1">
+                <li class="nav-item">
+                <router-link to="/member" class="nav-link active">會員中心</router-link>
+                </li>
                 <li class="nav-item">
                   <a href="/" class="nav-link active" @click="logout">登出{{loginStatus}}</a>
                 </li>
@@ -62,9 +65,6 @@ export default {
     currentQuantiy(){
       return this.$store.getters.currentQuantiy
     },
-    updateLoginStatus() {
-        return this.$store.state.loginStatus
-    }
   },
   methods: {
     async logout() {

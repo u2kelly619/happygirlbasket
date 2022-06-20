@@ -3,13 +3,13 @@
         <div class="card-body text-center">
             <h5 class="card-title">{{productName}}</h5>
             <img :src="img" alt="" class="img-fluid mb-3">
-            <p>${{price}}</p>
+            <span>${{price}}</span>
             <!-- <button class="btn btn-primary">
                 ${pokemon.picked ? '<i class="bi bi-dash"></i>從購物車移除' : '<i class="bi bi-plus"></i>加入購物車'}
                 加入購物車
             </button> -->
         </div>
-        <input class="form-control" type="number" v-model.number="number">
+        <!-- <input class="form-control" type="number" v-model.number="number"> -->
         <slot></slot>
     </div>
 </template>

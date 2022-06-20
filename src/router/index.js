@@ -10,6 +10,7 @@ import ProductCartView from '../views/ProductCartView.vue'
 import ProductPageView from '../views/ProductPageView.vue'
 import ProductInfoView from '../views/ProductInfoView.vue'
 import RecipeView from '../views/RecipeView.vue'
+import MemberView from '../views/MemberView.vue'
 
 
 
@@ -54,16 +55,22 @@ const routes = [
     name: 'ProductPageView',
     component: ProductPageView,
   },
-  // {
-  //   path: '/products/:productId',
-  //   name: 'Product',
-  //   component: ProductInfoView
-  // },
+  {
+    path: '/products/:productId',
+    name: 'Product',
+    component: ProductInfoView
+  },
   {
     path: '/recipe',
     name: 'RecipeView',
     component: RecipeView,
   },
+  {
+    path: '/member',
+    name: 'MemberView',
+    component: MemberView,
+  },
+
   
 ]
 
