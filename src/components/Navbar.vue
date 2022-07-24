@@ -27,7 +27,7 @@
               <li class="nav-item ps-5">
                 <router-link to="/cart" class="nav-link active"><i class="bi bi-cart"></i> ({{currentQuantiy}})</router-link>
               </li>
-              <template v-if="$store.state.loginStatus === 0">
+              <template v-if="loginStatus === 0">
                 <li class="nav-item">
                   <router-link to="/login" class="nav-link active">登入{{loginStatus}}</router-link>
                 </li>
@@ -35,7 +35,7 @@
                 <router-link to="/signup" class="nav-link active">註冊</router-link>
                 </li>
               </template>
-              <template v-if="$store.state.loginStatus === 1">
+              <template v-else="loginStatus === 1">
                 <li class="nav-item">
                 <router-link to="/member" class="nav-link active">會員中心</router-link>
                 </li>
@@ -57,22 +57,29 @@ export default {
       // loginStatus: this.$store.state.loginStatus
     }
   },
-  async mounted() {
-      await this.$store.dispatch('getLoginStatus')
-      console.log('loginStatus', this.$store.state.loginStatus)
-  },
   computed:{
     currentQuantiy(){
       return this.$store.getters.currentQuantiy
     },
+    loginStatus(){
+      return this.$store.getters.loginStatus
+    }
   },
   methods: {
-    async logout() {
-        await this.axios.post('/logout').then((response) => {
-            console.log("logout", response)
-            this.$store.dispatch('getLoginStatus')
-        })
-    }
+    logout: function(){
+      this.axios.post('/logout')
+          .then((response) => {
+            console.log(response.data)
+            // this.$router.push('/')
+            // this.$store.commit({
+            //   type: 'updateLoginStatus',
+            //   loginStatus: 0
+            // })
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+    },
   },
 }
 </script>

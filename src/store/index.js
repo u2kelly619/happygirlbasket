@@ -1,6 +1,5 @@
 import { createStore } from 'vuex';
 import createPersistedState from "vuex-persistedstate";
-import axios from 'axios'
 
 export default createStore({
   state: {
@@ -18,15 +17,13 @@ export default createStore({
       console.log(state.cart)
       return state.cart.reduce((productNumber, product) => parseInt(productNumber)+product.number, 0)
     },
-    // loginStatus(state){
-    //   return state.loginStatus
-    // }
+    loginStatus(state){
+      return state.loginStatus
+    }
   },
   mutations: {
-    updateLoginStatus(state, payload){
-      console.log('updateLoginStatus run!');
-      state.loginStatus = payload
-      console.log("updateLoginStatus",state.loginStatus)
+    updateLoginStatus(state, {loginStatus}){
+      state.loginStatus = loginStatus
     },
     addCart(state, data){
       let isNewProduct = true
@@ -51,11 +48,10 @@ export default createStore({
   },
   actions: {
     getLoginStatus(context){
-      axios.get('/loginStatus')
+      this.axios.get('/loginStatus')
           .then((response) => {
-            console.log(response.data.loginStatus)
-            let payload = response.data.loginStatus
-            context.commit('updateLoginStatus', payload)
+            console.log(response.data)
+            context.commit('updateLoginStatus')
           })
           .catch((err)=>{
             console.log(err);

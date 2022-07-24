@@ -98,13 +98,13 @@ export default {
           return emailRule.test(email);
         },
 
-        async postLogin() {
+        postLogin() {
             const submitForm = {
                 email: this.email,
                 password: this.password
             }
             // console.log(submitForm)
-            await this.axios.post('/login', submitForm)
+            this.axios.post('/login', submitForm)
                 .then((res) => {
                   console.log(res.data)
                   let status = res.data.loginSuccess
